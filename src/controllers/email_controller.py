@@ -25,7 +25,7 @@ async def classify_email(file: UploadFile = None, text: str = Form(None)):
 
     return {
         "category": category,
-        "sugested_response": (
+        "suggested_response": (
             f"E-mail identificado como {category}. "
             "Resposta automática será sugerida na próxima etapa."
         ),

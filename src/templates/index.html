@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Email Classifier</title>
+    <link rel="stylesheet" href="/static/css/style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Email Classifier</h1>
+      <p>
+        Classifique seus emails em Produtivo ou Improdutivo automaticamente.
+      </p>
+
+      <form id="emailForm">
+        <label for="file">Upload de arquivo (.txt ou .pdf):</label>
+        <input type="file" id="file" name="file" accept=".txt,.pdf" />
+
+        <label for="text">Ou insira o texto do email:</label>
+        <textarea
+          id="text"
+          name="text"
+          placeholder="Cole aqui o conteúdo do email..."
+        ></textarea>
+
+        <button type="submit">Classificar</button>
+      </form>
+
+      <div id="result" class="hidden">
+        <h2>Resultado</h2>
+        <p><strong>Categoria:</strong> <span id="category"></span></p>
+        <p><strong>Resposta sugerida:</strong> <span id="response"></span></p>
+      </div>
+    </div>
+    <script src="/static/js/main.js"></script>
+  </body>
+</html>
