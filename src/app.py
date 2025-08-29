@@ -1,8 +1,13 @@
-from services.nlp_service import EmailClassifier
+from fastapi import FastAPI
 
-if __name__ == "__main__":
-    classifier = EmailClassifier()
+from src.controllers import email_controller
 
-    email_exemplo = "Olá, gostaria de saber o status da minha solicitação de suporte."
-    print("E-mail:", email_exemplo)
-    print("Categoria:", classifier.classify(email_exemplo))
+app = FastAPI(title="Email Classifier API")
+
+# Registrar rotas
+app.include_router(email_controller.router, prefix="/emails", tags=["Emails"])
+
+
+@app.get("/")
+async def root():
+    return {"message": "Email Classifier API is running!"}
