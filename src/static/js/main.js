@@ -24,7 +24,7 @@ document
     const data = await response.json();
 
     document.getElementById('category').innerText = data.category;
-    document.getElementById('response').innerText = data.suggested_response;
+    document.getElementById('response').innerText = data.response;
 
     document.getElementById('result').classList.remove('hidden');
   });

@@ -1,32 +1,38 @@
 from fastapi import APIRouter, Form, UploadFile
 
-from src.services.nlp_service import EmailClassifier
+from src.services.email_service import EmailService
+from src.utils.file_reader import FileReader
+from src.utils.text_preprocessor import TextPreprocessor
 
 router = APIRouter()
-classifier = EmailClassifier()
 
 
 @router.post("/classify")
-async def classify_email(file: UploadFile = None, text: str = Form(None)):
+async def upload_email(file: UploadFile = None, text: str = Form(None)):
     """
     Endpoint para classificar e-mails enviados por upload (.txt/.pdf) ou texto direto.
     """
     content = ""
 
     if file:
-        # Leitura simples (tratamento de PDF será feito depois)
-        content = (await file.read()).decode("utf-8")
+        if file.filename.endswith(".txt"):
+            content = FileReader.read_txt(file.file)
+        elif file.filename.endswith(".pdf"):
+            content = FileReader.read_pdf(file.file)
+        else:
+            return {
+                "error": (
+                    "Formato de arquivo não suportado. Por favor, use .txt ou .pdf."
+                )
+            }
     elif text:
         content = text
     else:
-        return {"error": "No input provided."}
+        return {"error": "Nenhum conteúdo enviado."}
 
-    category = classifier.classify(content)
+    preprocessed_text = TextPreprocessor.preprocess(content)
 
-    return {
-        "category": category,
-        "suggested_response": (
-            f"E-mail identificado como {category}. "
-            "Resposta automática será sugerida na próxima etapa."
-        ),
-    }
+    service = EmailService()
+    result = service.classify_email(preprocessed_text)
+
+    return result
