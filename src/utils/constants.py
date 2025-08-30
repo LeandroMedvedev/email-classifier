@@ -1,4 +1,4 @@
-MESSAGES = {
+PROMPT = {
     "PRODUTIVO": (
         "Obrigado pelo seu contato.\n"
         "Estamos analisando sua solicitação e retornaremos em breve.\n\n"

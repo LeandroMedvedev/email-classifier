@@ -2,38 +2,108 @@
 <html lang="pt-BR">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
     <title>Email Classifier</title>
     <link rel="icon" href="/static/imgs/favicon.svg" type="image/svg+xml" />
     <link rel="stylesheet" href="/static/css/style.css" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap"
+      rel="stylesheet"
+    />
   </head>
+
+  <!-- Container para os toasters -->
+  <div id="toast-container"></div>
+
   <body>
-    <div class="container">
-      <h1>Email Classifier</h1>
-      <p>
-        Classifique seus e-mails em Produtivo ou Improdutivo automaticamente.
-      </p>
-
-      <form id="emailForm">
-        <label for="file">Upload de arquivo (.txt ou .pdf):</label>
-        <input type="file" id="file" name="file" accept=".txt,.pdf" />
-
-        <label for="text">Ou insira o texto do email:</label>
-        <textarea
-          id="text"
-          name="text"
-          placeholder="Cole aqui o conteúdo do email..."
-        ></textarea>
-
-        <button type="submit">Classificar</button>
-      </form>
-
-      <div id="result" class="hidden">
-        <h2>Resultado</h2>
-        <p><strong>Categoria:</strong> <span id="category"></span></p>
-        <p><strong>Resposta sugerida:</strong> <span id="response"></span></p>
+    <header class="hero">
+      <div class="hero__content">
+        <h1 class="hero__title">Classificador de E-mails</h1>
+        <p class="hero__subtitle">
+          Classifique e-mails como <strong>Produtivo</strong> ou
+          <strong>Improdutivo</strong> e gere respostas com IA.
+        </p>
       </div>
-    </div>
+    </header>
+
+    <main class="container">
+      <section class="card">
+        <div class="tabs" role="tablist" aria-label="Entrada">
+          <button
+            id="tab-texto"
+            class="tab active"
+            role="tab"
+            aria-selected="true"
+          >
+            Inserir texto
+          </button>
+          <button id="tab-arquivo" class="tab" role="tab" aria-selected="false">
+            Upload .txt /.pdf
+          </button>
+        </div>
+
+        <!-- Entrada por TEXTO -->
+        <div
+          id="pane-texto"
+          class="pane active"
+          role="tabpanel"
+          aria-labelledby="tab-texto"
+        >
+          <label class="label" for="emailText">Conteúdo do e-mail</label>
+          <textarea
+            id="emailText"
+            placeholder="Texto do e-mail aqui..."
+          ></textarea>
+        </div>
+
+        <!-- Entrada por ARQUIVO -->
+        <div
+          id="pane-arquivo"
+          class="pane"
+          role="tabpanel"
+          aria-labelledby="tab-arquivo"
+        >
+          <div id="dropzone" class="dropzone" tabindex="0">
+            <div class="dropzone__icon">📄</div>
+            <p class="dropzone__text">
+              Arraste um arquivo <strong>.txt</strong> ou
+              <strong>.pdf</strong> aqui<br />ou clique para selecionar
+            </p>
+            <input id="fileInput" type="file" accept=".txt,.pdf" hidden />
+          </div>
+          <span id="fileName" class="file-name"></span>
+          <div class="file-info">
+            <span id="fileName"></span>
+            <button id="clearFileBtn" type="button" class="hidden">
+              Excluir Arquivo
+            </button>
+          </div>
+        </div>
+
+        <div class="actions">
+          <button id="btnProcess" class="btn btn-primary">
+            <span class="btn__label">Classificar & Responder</span>
+            <span class="loader" aria-hidden="true"></span>
+          </button>
+        </div>
+      </section>
+
+      <section id="result" class="card result hidden" aria-live="polite">
+        <div class="result__row">
+          <span class="badge" id="categoryBadge">Categoria</span>
+        </div>
+        <div class="result__content">
+          <h3>Resposta sugerida</h3>
+          <p id="responseText" class="response"></p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p>© Email Classifier — AutoU</p>
+    </footer>
+
     <script src="/static/js/main.js"></script>
   </body>
 </html>

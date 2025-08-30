@@ -19,11 +19,23 @@ class OpenAIService:
         print(email_content)
         if category == "Produtivo":
             prompt = (
-                f"Responda a este e-mail de modo profissional e eficaz: {email_content}"
+                f"Você é um assistente profissional de e-mails em português. "
+                f"Leia o e-mail abaixo e escreva uma resposta clara, educada e "
+                f"objetiva em nome da equipe da empresa, como se estivesse "
+                f"respondendo ao cliente. "
+                f"Não copie o conteúdo do e-mail, apenas responda de forma "
+                f"apropriada.\n\n"
+                f"E-mail recebido:\n{email_content}\n\n"
+                f"Resposta:"
             )
         else:
             prompt = (
-                f"Responda a este e-mail de modo amigável e casual: {email_content}"
+                f"Você é um assistente simpático que responde e-mails em português. "
+                f"Escreva uma resposta curta, amigável e educada para o e-mail abaixo. "
+                f"Não repita o texto do e-mail, apenas responda de forma "
+                f"apropriada.\n\n"
+                f"E-mail recebido:\n{email_content}\n\n"
+                f"Resposta:"
             )
 
         response = client.chat.completions.create(

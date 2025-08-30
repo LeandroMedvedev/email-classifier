@@ -1,61 +1,326 @@
+:root {
+  --bg: #f7f9fc;
+  --card: #ffffff;
+  --text: #0b1220;
+  --muted: #5b6475;
+  --primary: #1f5cf5;
+  --primary-700: #1848c4;
+  --success: #10b981;
+  --danger: #ef4444;
+  --ring: rgba(31, 92, 245, 0.35);
+}
+
+* {
+  box-sizing: border-box;
+}
+html,
 body {
-  font-family: Arial, sans-serif;
-  background: #f5f7fa;
+  height: 100%;
+}
+body {
   margin: 0;
-  padding: 0;
-}
-
-.container {
-  max-width: 700px;
-  margin: 40px auto;
-  padding: 20px;
-  background: white;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-}
-
-h1 {
-  text-align: center;
-  color: #2c3e50;
-}
-
-form {
+  font-family: Inter, system-ui, -apple-system, Arial, sans-serif;
+  color: var(--text);
+  background: var(--bg);
   display: flex;
   flex-direction: column;
-  gap: 15px;
-  margin-top: 20px;
 }
 
-textarea {
-  height: 150px;
-  padding: 10px;
-  resize: vertical;
-  border: 1px solid #ccc;
-  border-radius: 6px;
+/* ===== Hero ===== */
+.hero {
+  background: radial-gradient(
+      1200px 400px at 50% -10%,
+      #e8efff 0%,
+      transparent 60%
+    ),
+    linear-gradient(180deg, #fff 0%, #f7f9fc 100%);
+  padding: 56px 16px 24px;
+  border-bottom: 1px solid #eef1f7;
+}
+.hero__content {
+  max-width: 1000px;
+  margin: 0 auto;
+  text-align: center;
+}
+.hero__title {
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  margin: 0 0 8px;
+  font-size: clamp(28px, 5vw, 44px);
+}
+.hero__subtitle {
+  margin: 0;
+  color: var(--muted);
+  font-size: clamp(14px, 2.4vw, 18px);
 }
 
-button {
-  background: #3498db;
-  color: white;
-  padding: 12px;
-  border: none;
-  border-radius: 8px;
+/* ===== Layout ===== */
+.container {
+  max-width: 1000px;
+  width: 100%;
+  margin: 24px auto;
+  padding: 0 16px;
+}
+.card {
+  background: var(--card);
+  border: 1px solid #e8edf5;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(16, 24, 40, 0.06);
+  padding: 20px;
+  margin-bottom: 16px;
+}
+
+/* ===== Tabs ===== */
+.tabs {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+.tab {
+  border: 1px solid #e3e8f3;
+  background: #fff;
+  color: #344154;
+  padding: 10px 14px;
+  border-radius: 999px;
   cursor: pointer;
-  font-weight: bold;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+.tab:hover {
+  border-color: #cbd5e1;
+}
+.tab.active {
+  background: var(--text);
+  color: #fff;
+  border-color: var(--text);
 }
 
-button:hover {
-  background: #2980b9;
+/* ===== Inputs ===== */
+.label {
+  display: block;
+  font-weight: 600;
+  margin: 6px 0;
+}
+textarea {
+  width: 100%;
+  min-height: 160px;
+  resize: vertical;
+  padding: 12px 14px;
+  font-size: 15px;
+  border-radius: 12px;
+  border: 1px solid #d8e1ef;
+  outline: none;
+}
+textarea:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 4px var(--ring);
 }
 
-#result {
-  margin-top: 20px;
-  padding: 15px;
-  border-left: 5px solid #3498db;
-  background: #ecf6fc;
+/* ===== Dropzone ===== */
+.dropzone {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 8px;
+  border: 2px dashed #cbd5e1;
+  border-radius: 14px;
+  padding: 24px;
+  background: #fafcff;
+  cursor: pointer;
+  outline: none;
+}
+.dropzone:focus {
+  box-shadow: 0 0 0 4px var(--ring);
+}
+.dropzone__icon {
+  font-size: 28px;
+}
+.dropzone__text {
+  margin: 0;
+  color: var(--muted);
+  text-align: center;
+}
+.file-name {
+  margin-top: 8px;
+  color: #334155;
+}
+
+/* ===== Remove Button ===== */
+.file-info {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 6px;
+}
+
+#clearFileBtn {
+  background: #f1f5f9;
+  border: none;
   border-radius: 6px;
+  padding: 2px 8px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  color: #475569;
+  transition: 0.2s ease;
+}
+#clearFileBtn:hover {
+  background: #e2e8f0;
 }
 
+/* ===== Actions / Button ===== */
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 12px;
+}
+.btn {
+  border: none;
+  border-radius: 999px;
+  cursor: pointer;
+  font-weight: 700;
+  padding: 12px 18px;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+.btn-primary {
+  background: linear-gradient(90deg, var(--primary), #6b8bff);
+  color: #fff;
+  box-shadow: 0 10px 22px rgba(31, 92, 245, 0.25);
+}
+.btn-primary:hover {
+  filter: brightness(0.95);
+}
+.btn[disabled] {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Loader circular no botão */
+.loader {
+  width: 16px;
+  height: 16px;
+  border-radius: 999px;
+  border: 2px solid rgba(255, 255, 255, 0.6);
+  border-top-color: #fff;
+  display: none;
+  animation: spin 1s linear infinite;
+}
+.btn.loading .loader {
+  display: inline-block;
+}
+.btn.loading .btn__label {
+  opacity: 0.85;
+}
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ===== Result ===== */
 .hidden {
   display: none;
+}
+.result__row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 13px;
+  background: #eef2ff;
+  color: #1e3a8a;
+  border: 1px solid #e2e8f0;
+}
+.badge.produtivo {
+  background: #ecfdf5;
+  color: #065f46;
+  border-color: #bbf7d0;
+}
+.badge.improdutivo {
+  background: #fef2f2;
+  color: #7f1d1d;
+  border-color: #fecaca;
+}
+
+.result__content h3 {
+  margin: 0 0 6px;
+}
+.response {
+  margin: 0;
+  color: #1f2937;
+  line-height: 1.6;
+}
+
+/* ===== Toaster ===== */
+#toast-container {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.toast {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 300px;
+  padding: 14px 18px;
+  border-radius: 12px;
+  color: #fff;
+  font-size: 0.95rem;
+  font-weight: 500;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  opacity: 0;
+  transform: translateX(100%);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.toast.show {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.toast.success {
+  background: linear-gradient(135deg, #34d399, #059669);
+}
+
+.toast.error {
+  background: linear-gradient(135deg, #f87171, #dc2626);
+}
+
+.toast svg {
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+}
+
+/* ===== Footer ===== */
+.footer {
+  color: #93a1b2;
+  text-align: center;
+  padding: 24px;
+}
+
+/* ===== Mobile ===== */
+@media (max-width: 640px) {
+  .actions {
+    justify-content: stretch;
+  }
+  .btn {
+    width: 100%;
+    justify-content: center;
+  }
 }

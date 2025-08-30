@@ -31,7 +31,7 @@ app.mount("/static", StaticFiles(directory="src/static"), name="static")
 templates = Jinja2Templates(directory="src/templates")
 
 # Registrar rotas
-app.include_router(email_controller.router, prefix="/emails", tags=["Emails"])
+app.include_router(email_controller.router)
 
 
 @app.get("/", response_class=HTMLResponse)

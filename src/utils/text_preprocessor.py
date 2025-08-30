@@ -24,27 +24,38 @@ class TextPreprocessor:
 
     @staticmethod
     def clean_text(text: str) -> str:
-        # Minúsculas
+        """
+        Limpeza leve: minúsculas, remoção de URLs, pontuação e espaços extras.
+        """
         text = text.lower()
-        # Remove URLs
         text = re.sub(r"http\S+|www\S+|https\S+", "", text, flags=re.MULTILINE)
-        # Remove pontuação
         text = text.translate(str.maketrans("", "", string.punctuation))
-        # Remove múltiplos espaços
         text = re.sub(r"\s+", " ", text).strip()
         return text
 
     @classmethod
     def lemmatize(cls, text: str) -> str:
+        """
+        Lematização com spaCy (útil apenas para classificação).
+        """
         nlp = cls._get_nlp()
         doc = nlp(text)
         tokens = [token.lemma_ for token in doc if not token.is_stop]
         return " ".join(tokens)
 
     @classmethod
-    def preprocess(cls, text: str) -> str:
+    def preprocess_for_classification(cls, text: str) -> str:
+        """
+        Pré-processamento recomendado para classificação.
+        """
         cleaned = cls.clean_text(text)
         lemmatized = cls.lemmatize(cleaned)
-        # cleaned = TextPreprocessor.clean_text(text)
-        # lemmatized = TextPreprocessor.lemmatize(cleaned)
         return lemmatized
+
+    @staticmethod
+    def preprocess_for_generation(text: str) -> str:
+        """
+        Pré-processamento mínimo para geração de respostas.
+        Mantém o texto quase cru, apenas removendo ruídos visuais.
+        """
+        return re.sub(r"\s+", " ", text).strip()
