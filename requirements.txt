@@ -2,27 +2,27 @@
 fastapi==0.116.0
 uvicorn[standard]==0.23.2
 
-# NLP e Transformers
+# NLP and Transformers
 transformers==4.40.0
-torch==2.2.2+cpu
-torchvision==0.17.2+cpu
-torchaudio==2.2.2+cpu
+torch==2.2.2
+torchvision==0.17.2
+torchaudio==2.2.2
 sentencepiece==0.1.99
 tokenizers==0.13.3
 
-# spaCy e modelo português
+# spaCy and Portuguese model
 spacy==3.5.4
 pt-core-news-sm @ https://github.com/explosion/spacy-models/releases/download/pt_core_news_sm-3.5.0/pt_core_news_sm-3.5.0-py3-none-any.whl
 
-# PDF e leitura de arquivos
+# PDF and file reading
 pypdf==3.15.2
 pdfplumber==0.11.7
 
-# Requests para API Hugging Face
+# Hugging Face API requests
 requests==2.31.1
 
-# Variáveis de ambiente
+# Env vars
 python-dotenv==1.0.1
 
-# Tipagem e utilitários
+# Typing and utils
 pydantic==2.5.1
