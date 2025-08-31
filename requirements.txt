@@ -1,10 +1,12 @@
 # Core FastAPI
-fastapi==0.114.0
+fastapi==0.116.0
 uvicorn[standard]==0.23.2
 
 # NLP e Transformers
 transformers==4.40.0
-torch==2.7.0
+torch==2.2.2+cpu
+torchvision==0.17.2+cpu
+torchaudio==2.2.2+cpu
 sentencepiece==0.1.99
 tokenizers==0.13.3
 
@@ -12,15 +14,9 @@ tokenizers==0.13.3
 spacy==3.5.4
 pt-core-news-sm @ https://github.com/explosion/spacy-models/releases/download/pt_core_news_sm-3.5.0/pt_core_news_sm-3.5.0-py3-none-any.whl
 
-# Dependências relacionadas ao spaCy para evitar erro com blis
-blis==0.7.10
-cymem==2.0.7
-preshed==3.0.8
-thinc==8.1.9
-murmurhash==1.0.9
-
 # PDF e leitura de arquivos
 pypdf==3.15.2
+pdfplumber==0.11.7
 
 # Requests para API Hugging Face
 requests==2.31.1
