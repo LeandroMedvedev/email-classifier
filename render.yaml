@@ -2,10 +2,7 @@ services:
   - type: web
     name: email-classifier
     env: python
-    pythonVersion: 3.10.14   # versão correta do Python
+    pythonVersion: 3.10.14   # <- chave correta
     plan: free
     buildCommand: "pip install --upgrade pip && pip install -r requirements.txt"
     startCommand: "uvicorn src.app:app --host 0.0.0.0 --port $PORT"
-    envVars:
-      - key: PYTHON_VERSION
-        value: 3.10.14
