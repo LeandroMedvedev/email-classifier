@@ -6,6 +6,7 @@ pydantic==1.10.14
 transformers==4.44.0
 torch==2.3.0
 spacy==3.7.4
+pt_core_news_sm @ https://github.com/explosion/spacy-models/releases/download/pt_core_news_sm-3.8.0/pt_core_news_sm-3.8.0-py3-none-any.whl#sha256=c304fa04db3af73cd08a250feacf560506e15a2ec2469bd1b09f06847f6b455c
 pypdf==4.2.0
 requests==2.31.0
 python-dotenv==1.0.1
