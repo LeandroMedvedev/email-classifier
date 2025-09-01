@@ -2,11 +2,12 @@
 # exit on error
 set -o errexit
 
-# Instala e configura a versão estável do Rust como padrão
-rustup default stable
+# Cria um arquivo 'rust-toolchain' no projeto, forçando o uso da versão stable.
+# Isso funciona mesmo em subprocessos isolados.
+rustup override set stable
 
-# Adiciona o diretório de executáveis do Rust diretamente ao PATH
-export PATH="$CARGO_HOME/bin:$PATH"
+# Por garantia, exporto o PATH padrão para onde o rustup instala os binários.
+export PATH="$HOME/.cargo/bin:$PATH"
 
 # Atualiza o pip para a versão mais recente
 pip install --upgrade pip
