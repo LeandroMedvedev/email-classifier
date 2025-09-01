@@ -4,6 +4,11 @@ Um classificador inteligente de e-mails que identifica se um e-mail é **Produti
 
 ---
 
+## 🔗 URL
+[email-classifier](https://email-classifier-service-111453862559.southamerica-east1.run.app/)  
+
+---
+
 ## ✨ Funcionalidades
 - 🔍 Classificação de e-mails usando modelos da Hugging Face (DistilBERT) e OpenAI.
 - 🤖 Geração de respostas automáticas inteligentes (Flan-T5 / Hugging Face API).
@@ -22,10 +27,11 @@ cd email-classifier
 
 ### 2. Crie um ambiente virtual e instale as dependências
 ```bash
-python -m venv venv
+python -m venv .venv
 source venv/bin/activate  # Linux/Mac
 venv\Scripts\activate     # Windows
 
+pip install --upgrade pip
 pip install -r requirements.txt
 ```
 
@@ -65,6 +71,8 @@ Depois, abra no navegador:
 
 ### 🤝 Contribuições
 Sinta-se à vontade para abrir issues ou enviar PRs! 🙌  
+
+---
 
 ### 📜 Licença
 MIT License
