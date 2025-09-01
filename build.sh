@@ -5,6 +5,9 @@ set -o errexit
 # Instala e configura a versão estável do Rust como padrão
 rustup default stable
 
+# ATIVA o ambiente do cargo na sessão atual.
+source "$HOME/.cargo/env"
+
 # Atualiza o pip para a versão mais recente
 pip install --upgrade pip
 
