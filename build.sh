@@ -6,7 +6,7 @@ set -o errexit
 rustup default stable
 
 # ATIVA o ambiente do cargo na sessão atual.
-source "$HOME/.cargo/env"
+source "$CARGO_HOME/env"
 
 # Atualiza o pip para a versão mais recente
 pip install --upgrade pip
