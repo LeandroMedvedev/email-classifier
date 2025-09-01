@@ -1,6 +1,6 @@
 # 1. Ingrediente base: Comece com uma imagem oficial do Python.
 # Use a mesma versão que você desenvolveu (ex: 3.10, 3.11).
-FROM python:3.10-14
+FROM python:3.10-slim
 
 # 2. Defina o diretório de trabalho dentro da "caixa".
 ENV APP_HOME /app
