@@ -1,9 +1,17 @@
 #!/usr/bin/env bash
-# exit on error
 set -o errexit
 
-# Atualiza pip
+# Criar arquivo 'rust-toolchain' no projeto, forçando o uso da versão stable
+rustup override set stable
+
+# Exportar PATH padrão para onde rustup instala os binários
+export PATH="$HOME/.cargo/bin:$PATH"
+
+# Atualizar pip
 pip install --upgrade pip
 
-# ETAPA 2: Instala pacotes restantes. O pip vai ignorar o 'tokenizers' pois já está instalado.
+# Instalar tokenizers com versão específica para evitar conflitos
+pip install "tokenizers<0.20,>=0.19"
+
+# Instalar pacotes restantes
 pip install -r requirements.txt
